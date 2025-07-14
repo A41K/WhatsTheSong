@@ -14,23 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const backButton = document.getElementById('back-button');
     const scoreDisplay = document.getElementById('score-display');
 
-    // Using a proxy to bypass CORS issues with the Deezer API.
-    // For a production app, it's better to have your own backend server handle API requests.
+
     const API_URL = 'https://api.deezer.com/';
 
     let currentSong = null;
     let currentAudio = null;
     let guessAttempts = 0;
     let score = 0;
-    let selectedLanguage = '';
     let selectedGenre = '';
     const snippetDurations = [1000, 3000, 5000, 8000, 10000]; // 1s, 3s, 5s, 8s
 
+    const PROXY_URL = 'https://api.codetabs.com/v1/proxy?quest=';
+
     async function fetchFromAPI(endpoint) {
         try {
-            // Using a proxy to bypass CORS issues. Note: Public proxies can be unreliable.
-            // For a real application, a dedicated backend server is the best solution.
-            const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
             const response = await fetch(`${PROXY_URL}${API_URL}${endpoint}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -38,19 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
             return await response.json();
         } catch (error) {
             console.error('Error fetching from API:', error);
-            feedbackText.textContent = 'Failed to load data. The CORS proxy may be down. Please try again later or consider setting up your own proxy.';
+            feedbackText.textContent = 'Failed to load data. Please try again later.';
         }
     }
 
+
+
+    // Modify loadGenres to show genres immediately
     async function loadGenres() {
         const curatedGenres = [
-            { name: 'Pop' }, { name: 'Rap' }, { name: 'Rock' }, 
+            { name: 'Pop' }, { name: 'Rap' }, { name: 'Hip-Hop' },
             { name: 'Dance' }, { name: 'R&B' }, { name: 'Alternative' },
             { name: 'Jazz' }, { name: 'Country' }, { name: 'Classical' },
-            { name: 'Reggae' }, { name: 'Metal' }, { name: 'Indie' }
+            { name: 'Reggae' }, { name: 'Metal' }, { name: 'Indie' },
+              { name: 'Rock' }, { name: 'Electronic' },
         ];
 
-        genreListView.innerHTML = ''; // Clear existing genres
+        genreListView.innerHTML = '';
         curatedGenres.forEach(genre => {
             const button = document.createElement('button');
             button.className = 'genre-button';
@@ -58,8 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', () => selectGenre(genre.name));
             genreListView.appendChild(button);
         });
+
+        // Show genre selection immediately
+        document.getElementById('language-selection-view').classList.add('hidden');
+        genreSelectionView.classList.remove('hidden');
     }
 
+    // Modify selectGenre to use just the genre name
     async function selectGenre(genreName) {
         selectedGenre = genreName;
         genreSelectionView.classList.add('hidden');
@@ -69,9 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
         loadNewSong(genreName);
     }
 
+    // Modify loadNewSong to remove language from query
     async function loadNewSong(genreName) {
-        const query = `${selectedLanguage} ${genreName}`;
-        const searchData = await fetchFromAPI(`search/playlist?q=${encodeURIComponent(query)}`);
+        const searchData = await fetchFromAPI(`search/playlist?q=${encodeURIComponent(genreName)}`);
         if (searchData && searchData.data && searchData.data.length > 0) {
             // Pick a random playlist from the search results
             const playlist = searchData.data[Math.floor(Math.random() * searchData.data.length)];
@@ -229,5 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize the game
     loadLanguages();
+    // Initialize by loading genres directly
     loadGenres();
 });
