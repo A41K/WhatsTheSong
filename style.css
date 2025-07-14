@@ -9,6 +9,42 @@ body {
     margin: 0;
 }
 
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode #app-container {
+    background-color: #2c2c2c;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode header {
+    background-color: #3a3a3a;
+    border-bottom: 1px solid #4a4a4a;
+}
+
+body.dark-mode .genre-button, body.dark-mode #play-button, body.dark-mode #submit-guess, body.dark-mode #skip-button, body.dark-mode #next-song, body.dark-mode #dark-mode-toggle {
+    background-color: #555;
+    color: #e0e0e0;
+    border: 1px solid #666;
+}
+
+body.dark-mode .genre-button:hover, body.dark-mode #play-button:hover, body.dark-mode #submit-guess:hover, body.dark-mode #skip-button:hover, body.dark-mode #next-song:hover, body.dark-mode #dark-mode-toggle:hover {
+    background-color: #666;
+}
+
+body.dark-mode #guess-input {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #4a4a4a;
+}
+
+body.dark-mode footer {
+    background-color: #3a3a3a;
+    border-top: 1px solid #4a4a4a;
+}
+
 #app-container {
     width: 100%;
     max-width: 420px;

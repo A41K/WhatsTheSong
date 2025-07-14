@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const languageSelectionView = document.getElementById('language-selection-view');
-    const languageListView = document.getElementById('language-list');
     const genreListView = document.getElementById('genre-list');
     const playerView = document.getElementById('player-view');
     const genreSelectionView = document.getElementById('genre-selection-view');
@@ -60,9 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
             genreListView.appendChild(button);
         });
 
-        // Show genre selection immediately
-        document.getElementById('language-selection-view').classList.add('hidden');
-        genreSelectionView.classList.remove('hidden');
     }
 
     // Modify selectGenre to use just the genre name
@@ -106,24 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function loadLanguages() {
-        const languages = ['English', 'Spanish', 'French', 'German', 'Italian', 'Portuguese', 'Hindi', 'Japanese'];
-        languageListView.innerHTML = '';
-        languages.forEach(lang => {
-            const button = document.createElement('button');
-            button.className = 'language-button';
-            button.textContent = lang;
-            button.addEventListener('click', () => selectLanguage(lang));
-            languageListView.appendChild(button);
-        });
-    }
-
-    function selectLanguage(language) {
-        selectedLanguage = language;
-        languageSelectionView.classList.add('hidden');
-        genreSelectionView.classList.remove('hidden');
-        backButton.classList.remove('hidden'); // Show back button to return to language selection
-    }
 
     function resetGameState() {
         guessAttempts = 0;
@@ -221,20 +198,34 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!playerView.classList.contains('hidden')) {
             // From player back to genres
             playerView.classList.add('hidden');
+        }
+        genreSelectionView.classList.remove('hidden');
+        backButton.classList.add('hidden');
+    });
+
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        // Save user preference
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
+    // Load saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
             genreSelectionView.classList.remove('hidden');
             if (currentAudio) {
                 currentAudio.pause();
             }
-        } else if (!genreSelectionView.classList.contains('hidden')) {
-            // From genres back to languages
-            genreSelectionView.classList.add('hidden');
-            languageSelectionView.classList.remove('hidden');
-            backButton.classList.add('hidden');
         }
     });
 
-    // Initialize the game
-    loadLanguages();
     // Initialize by loading genres directly
     loadGenres();
 });
