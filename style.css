@@ -30,6 +30,40 @@ body.dark-mode .genre-button, body.dark-mode #play-button, body.dark-mode #submi
     border: 1px solid #666;
 }
 
+#dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #e0e0e0;
+    color: #1d1d1f;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#dark-mode-toggle .icon {
+    width: 18px;
+    height: 18px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%231d1d1f"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 7.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V8.25a.75.75 0 01.75-.75zM4.5 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H5.25a.75.75 0 01-.75-.75zM7.5 16.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM12 19.5a.75.75 0 01.75.75V22a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75zM16.5 16.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM19.5 12a.75.75 0 01.75-.75H22a.75.75 0 010 1.5h-2.25a.75.75 0 01-.75-.75zM16.5 7.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V8.25a.75.75 0 01.75-.75zM12 6a6 6 0 110 12 6 6 0 010-12z" /></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image 0.3s ease;
+}
+
+body.dark-mode #dark-mode-toggle {
+    background-color: #4a4a4a;
+    color: #e0e0e0;
+}
+
+body.dark-mode #dark-mode-toggle .icon {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23e0e0e0"><path d="M9.599 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM5.625 4.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V5.25a.75.75 0 01.75-.75zm12.75 0a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V5.25a.75.75 0 01.75-.75zM2.25 9.599a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V10.35a.75.75 0 01.75-.75zm19.5 0a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V10.35a.75.75 0 01.75-.75zM5.625 16.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zm12.75 0a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM12 19.5a.75.75 0 01.75.75V22a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75zM12 6a6 6 0 110 12 6 6 0 010-12z" /></svg>');
+}
+
 body.dark-mode .genre-button:hover, body.dark-mode #play-button:hover, body.dark-mode #submit-guess:hover, body.dark-mode #skip-button:hover, body.dark-mode #next-song:hover, body.dark-mode #dark-mode-toggle:hover {
     background-color: #666;
 }
@@ -43,6 +77,16 @@ body.dark-mode #guess-input {
 body.dark-mode footer {
     background-color: #3a3a3a;
     border-top: 1px solid #4a4a4a;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px 20px;
+    border-top: 1px solid #e5e5e5;
+    gap: 10px;
 }
 
 #app-container {

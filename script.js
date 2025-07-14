@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         genreSelectionView.classList.add('hidden');
         playerView.classList.remove('hidden');
         backButton.classList.remove('hidden');
+        darkModeToggle.classList.add('hidden');
         feedbackText.textContent = 'Loading song...';
         loadNewSong(genreName);
     }
@@ -201,9 +202,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         genreSelectionView.classList.remove('hidden');
         backButton.classList.add('hidden');
+        darkModeToggle.classList.remove('hidden');
     });
 
     const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkModeToggleIcon = darkModeToggle.querySelector('.icon');
+
+    function updateDarkModeButton() {
+        if (document.body.classList.contains('dark-mode')) {
+            darkModeToggle.textContent = '';
+            darkModeToggle.prepend(darkModeToggleIcon);
+        } else {
+            darkModeToggle.textContent = '';
+            darkModeToggle.prepend(darkModeToggleIcon);
+        }
+    }
+
     darkModeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         // Save user preference
@@ -212,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             localStorage.setItem('theme', 'light');
         }
+        updateDarkModeButton();
     });
 
     // Load saved theme preference
@@ -219,12 +234,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
     }
+    updateDarkModeButton();
             genreSelectionView.classList.remove('hidden');
             if (currentAudio) {
                 currentAudio.pause();
             }
-        }
-    });
+        
+    
 
     // Initialize by loading genres directly
     loadGenres();
