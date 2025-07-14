@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Song</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-container">
+        <header>
+            <button id="back-button" class="hidden">&lt; Genres</button>
+            <h1>Guess the Song</h1>
+            <div id="score-display">Score: 0</div>
+        </header>
+
+        <main id="game-view">
+            <div id="language-selection-view">
+                <h2>Select a Language</h2>
+                <div id="language-list">
+                    <!-- Languages will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div id="genre-selection-view" class="hidden">
+                <h2>Select a Genre</h2>
+                <div id="genre-list">
+                    <!-- Genres will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div id="player-view" class="hidden">
+                <div id="song-artwork">
+                    <img src="" alt="">
+                </div>
+                <div id="player-controls">
+                    <button id="play-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px"><path d="M8 5v14l11-7z"/></svg></button>
+                </div>
+                <div id="guess-section">
+                    <input type="text" id="guess-input" placeholder="Enter your guess...">
+                    <button id="submit-guess">Submit</button>
+                    <button id="skip-button">Skip</button>
+                </div>
+                <p id="feedback"></p>
+                <button id="next-song" class="hidden">Next Song</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by <a href="https://www.deezer.com" target="_blank">Deezer.</a> Made by <a href="https://a41k.github.io" target="_blank">a41k</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

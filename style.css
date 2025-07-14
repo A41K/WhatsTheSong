@@ -1,0 +1,208 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#app-container {
+    width: 100%;
+    max-width: 420px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #f5f5f7;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 600;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+#genre-selection-view h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#language-list, #genre-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.language-button, .genre-button {
+    padding: 15px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    text-align: center;
+}
+
+.language-button:hover, .genre-button:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+#player-view.hidden, .hidden {
+    display: none;
+}
+
+#song-artwork {
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#song-artwork img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#player-controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#play-button {
+    background-color: #34c759;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+#play-button:hover {
+    background-color: #2ca048;
+}
+
+#guess-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#guess-input {
+    flex-grow: 1;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 16px;
+}
+
+#guess-input:focus {
+    outline: none;
+    border-color: #007aff;
+}
+
+#back-button, #submit-guess, #next-song, #skip-button {
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#back-button {
+    background-color: transparent;
+    color: #007aff;
+    padding-left: 0;
+}
+
+#score-display {
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 70px; /* Ensure space is reserved */
+    text-align: right;
+}
+
+#skip-button {
+    background-color: #ff3b30;
+}
+
+#submit-guess:hover, #next-song:hover, #skip-button:hover {
+    background-color: #005ecb;
+}
+
+#skip-button:hover {
+    background-color: #c02d25;
+}
+
+#submit-guess:hover, #next-song:hover {
+    background-color: #005ecb;
+}
+
+#feedback {
+    text-align: center;
+    min-height: 24px;
+    font-weight: 500;
+}
+
+#next-song {
+    width: 100%;
+    margin-top: 10px;
+}
+
+footer {
+    background-color: #f5f5f7;
+    padding: 15px;
+    text-align: center;
+    font-size: 12px;
+    color: #8a8a8e;
+    border-top: 1px solid #e5e5e5;
+}
+
+footer a {
+    color: #007aff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
